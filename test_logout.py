@@ -1,6 +1,7 @@
-import time
 from selenium.webdriver.chromium.webdriver import ChromiumDriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 def test_logout_success(driver: ChromiumDriver):
     email = 'seva-ost1987@yandex.ru'
@@ -12,11 +13,12 @@ def test_logout_success(driver: ChromiumDriver):
     driver.find_element(By.NAME, "Пароль").send_keys('qaqaqa')
     # Кнопка Войти на странице логина
     driver.find_element(By.CLASS_NAME, "button_button__33qZ0").click()
-    time.sleep(1)
     # Кнопка Личный Кабинет на главной
-    driver.find_element(By.LINK_TEXT, "Личный Кабинет").click()
+    element = WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.LINK_TEXT, "Личный Кабинет")))
+    element.click()
     # Кнопка Выход на странице профиля
-    driver.find_element(By.LINK_TEXT, "Выход").click()
+    element = WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH, ".//button[contains(text(), 'Выход')]")))
+    element.click()
     # Кнопка Войти на странице логина
     assert driver.find_element(By.CLASS_NAME, "button_button__33qZ0").is_enabled()
 

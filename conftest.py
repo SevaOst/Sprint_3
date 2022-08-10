@@ -1,16 +1,11 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 
-
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='function', autouse=True)
 def driver():
-    path = "/Users/seva/Documents/PycharmProjects/WebDriver/bin/chromedriver"
-    service = Service(path)
-    chrome_options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    driver.get("https://stellarburgers.nomoreparties.site")
+    driver = webdriver.Chrome
     driver.maximize_window()
+    driver.get("https://stellarburgers.nomoreparties.site")
     yield driver
     driver.quit()
 

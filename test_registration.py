@@ -1,7 +1,7 @@
 import time
 from selenium.webdriver.chromium.webdriver import ChromiumDriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 def test_success_registration(driver: ChromiumDriver):
@@ -19,7 +19,7 @@ def test_success_registration(driver: ChromiumDriver):
     driver.find_element(By.XPATH, ".//fieldset[3]/div/div/input").send_keys('qaqaqa')
     # Ссылка 'Зарегистрироваться' на странице регистрации
     driver.find_element(By.XPATH, ".//form/button[text()='Зарегистрироваться']").click()
-    WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((By.XPATH, ".//form/button[text()='Войти']")))
+    WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.XPATH, ".//form/button[text()='Войти']")))
 
     assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login', "Не перешли на стартовую страницу"
     print("Перешли на стартовую страницу")
