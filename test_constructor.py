@@ -1,4 +1,3 @@
-import time
 from selenium.webdriver.chromium.webdriver import ChromiumDriver
 from selenium.webdriver.common.by import By
 
@@ -8,7 +7,6 @@ def test_constructor_sections_success():#driver: ChromiumDriver):
     driver.find_element(By.XPATH, ".//section[1]/div[1]/div[2]/span").click()
     # Кнопка Начинки на главной
     driver.find_element(By.XPATH, ".//section[1]/div[1]/div[3]/span").click()
-    time.sleep(1)
     # Кнопка Булки на главной
     driver.find_element(By.XPATH, ".//section[1]/div[1]/div[1]/span").click()
 
