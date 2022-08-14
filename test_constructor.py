@@ -2,7 +2,7 @@ from selenium.webdriver.chromium.webdriver import ChromiumDriver
 from selenium.webdriver.common.by import By
 
 
-def test_constructor_sections_success():#driver: ChromiumDriver):
+def test_constructor_sections_success(driver: ChromiumDriver):
     # Кнопка Соусы на главной
     driver.find_element(By.XPATH, ".//section[1]/div[1]/div[2]/span").click()
     # Кнопка Начинки на главной
